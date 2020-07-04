@@ -4,3 +4,6 @@ micronaut:
 micronaut:
   server:
     port: 8086
+kafka:
+  bootstrap:
+    servers: localhost:9092
