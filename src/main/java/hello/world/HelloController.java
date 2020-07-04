@@ -17,7 +17,7 @@ public class HelloController {
     @Get(produces = MediaType.TEXT_PLAIN)
     public String index() {
         String tokenId = Integer.valueOf(ThreadLocalRandom.current().nextInt(100000, 999999)).toString();
-        tokenUpdateBean.sendSampleMessage(tokenId, tokenId+"Active");
+        tokenUpdateBean.sendSampleMessage(tokenId, tokenId+": Active");
         return "Token Number"+tokenId;
     }
 }
