@@ -1,4 +1,4 @@
-package com.cts.eda.mnt.kfk.producer;
+package com.cts.eda.mnt.event.producer;
 import io.micronaut.configuration.kafka.annotation.KafkaClient;
 import io.micronaut.configuration.kafka.annotation.Topic;
 import io.micronaut.configuration.kafka.annotation.KafkaKey;
