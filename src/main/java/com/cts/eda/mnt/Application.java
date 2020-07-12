@@ -1,4 +1,4 @@
-package hello.world;
+package com.cts.eda.mnt;
 
 import io.micronaut.runtime.Micronaut;
 
