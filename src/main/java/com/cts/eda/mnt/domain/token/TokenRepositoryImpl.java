@@ -12,7 +12,6 @@ import com.cts.eda.mnt.domain.token.TokenRepository;
 
 @Singleton
 public class TokenRepositoryImpl implements TokenRepository {
-//    @PersistenceContext
     private final EntityManager entityManager;
 
     public TokenRepositoryImpl(EntityManager entityManager) {
