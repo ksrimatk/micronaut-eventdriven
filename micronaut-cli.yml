@@ -1,5 +1,5 @@
 applicationType: default
-defaultPackage: hello.world
+defaultPackage: com.cts.eda.mnt
 testFramework: junit
 sourceLanguage: java
 buildTool: gradle

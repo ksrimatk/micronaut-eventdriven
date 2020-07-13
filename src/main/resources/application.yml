@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: helloWorld
+    name: edaRest
   server:
     port: 8086
   max: 50
@@ -14,14 +14,9 @@ datasources:
     username: EDAREST
     password: gogreen
     driverClassName: oracle.jdbc.driver.OracleDriver
-#    minPoolSize: 1
-#    maxPoolSize: 10
-#    connectionFactoryClassName: oracle.ucp.jdbc.PoolXADataSource
-#    jpa.default.properties.hibernate.hbm2ddl.auto: update
 jpa:
   default:
     entity-scan:
-      classpath: true
       packages:
         - 'com.cts.eda.mnt.domain.token'
     properties:
