@@ -5,7 +5,7 @@ plugins {
 }
 
 version "0.1"
-group "hello.world"
+group "com.cts.eda.mnt"
 
 repositories {
     mavenCentral()
@@ -68,7 +68,7 @@ tasks.withType(JavaCompile) {
         '-parameters',
         // enables incremental compilation
         '-Amicronaut.processing.incremental=true',
-        '-Amicronaut.processing.annotations=hello.world.*',
+        '-Amicronaut.processing.annotations=com.cts.eda.mnt.*',
         "-Amicronaut.processing.group=$project.group",
         "-Amicronaut.processing.module=$project.name",
     ])
