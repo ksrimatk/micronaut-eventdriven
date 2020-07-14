@@ -22,6 +22,7 @@ dependencies {
     annotationProcessor("io.micronaut:micronaut-inject-java")
     annotationProcessor("io.micronaut:micronaut-validation")
     annotationProcessor "javax.persistence:javax.persistence-api:2.2"
+    annotationProcessor("io.micronaut.data:micronaut-data-processor:1.1.1")
 
     implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
     implementation("io.micronaut:micronaut-inject")
@@ -34,6 +35,7 @@ dependencies {
     implementation("io.micronaut.kafka:micronaut-kafka")
 
     implementation("javax.annotation:javax.annotation-api")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
     implementation("io.micronaut.sql:micronaut-hibernate-jpa")
     runtime("io.micronaut.sql:micronaut-jdbc-tomcat")
     runtime "com.h2database:h2"

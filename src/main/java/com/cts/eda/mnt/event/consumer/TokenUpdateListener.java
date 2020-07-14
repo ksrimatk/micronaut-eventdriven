@@ -1,11 +1,14 @@
 package com.cts.eda.mnt.event.consumer;
 
-import com.cts.eda.mnt.domain.token.TokenRepositoryImpl;
+import com.cts.eda.mnt.domain.token.Token;
+import com.cts.eda.mnt.domain.token.service.TokenDomainService;
 import io.micronaut.configuration.kafka.annotation.KafkaKey;
 import io.micronaut.configuration.kafka.annotation.KafkaListener;
 import io.micronaut.configuration.kafka.annotation.Topic;
 import io.micronaut.context.annotation.Property;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+
+import javax.inject.Inject;
 
 @KafkaListener(
         groupId = "tokens",
@@ -14,11 +17,11 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 )
 
 public class TokenUpdateListener {
-    protected final TokenRepositoryImpl tokenRepositoryImpl;
+    public static final String ACTIVE_STATUS="Active";
+    public static final String SUSPENDED_STATUS="Suspend";
 
-    public TokenUpdateListener(TokenRepositoryImpl tokenRepositoryImpl) {
-        this.tokenRepositoryImpl = tokenRepositoryImpl;
-    }
+    @Inject
+    private TokenDomainService tokenDomainService;
 
     @Topic("token-update")
     public void receive(
@@ -28,15 +31,15 @@ public class TokenUpdateListener {
             int partition,
             String topic,
             long timestamp) {
-
         System.out.println("Token Status - " + tokenStatus + " for Token Id  " + tokenId);
-        System.out.println(tokenRepositoryImpl.findById(10004L).orElse(null));
-
+        Token updatedToken = tokenDomainService.updateToken();
+        System.out.println("Updated Token"+updatedToken);
     }
 
     @Topic("token-update")
     public void receive(String tokenStatus){
         System.out.println("Token Status >>> " + tokenStatus);
-        System.out.println(tokenRepositoryImpl.findById(10004L).orElse(null));
+        Token updatedToken = tokenDomainService.updateToken();
+        System.out.println("Updated Token"+updatedToken);
     }
 }
