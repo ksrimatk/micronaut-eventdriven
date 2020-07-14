@@ -1,6 +1,6 @@
-package com.cts.eda.mnt.service;
+package com.cts.eda.mnt.controller;
 
-import com.cts.eda.mnt.event.producer.TokenUpdateBean;
+import com.cts.eda.mnt.service.TokenOpsService;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Post;
@@ -12,12 +12,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class TokenController {
 
     @Inject
-    TokenUpdateBean tokenUpdateBean;
+    TokenOpsService tokenOpsService;
 
     @Post(produces = MediaType.APPLICATION_JSON)
     public String emitTokenUpdate() {
         String tokenId = Integer.valueOf(ThreadLocalRandom.current().nextInt(100000, 999999)).toString();
-        tokenUpdateBean.sendSampleMessage(tokenId, tokenId+": Active");
+        tokenOpsService.updateToken(tokenId, tokenId+": Active");
         return "Token Number"+tokenId;
     }
 }
