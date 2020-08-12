@@ -10,7 +10,7 @@ public class TokenOpsService {
     @Inject
     TokenUpdateBean tokenUpdateBean;
 
-    public String updateToken(String tokenId, String status) {
+    public String updateToken(Long tokenId, String status) {
         tokenUpdateBean.updateToken(tokenId, tokenId+": Active");
         return "Token Number"+tokenId;
     }
