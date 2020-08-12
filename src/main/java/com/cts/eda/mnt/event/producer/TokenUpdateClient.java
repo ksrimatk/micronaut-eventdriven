@@ -5,7 +5,7 @@ import io.micronaut.configuration.kafka.annotation.KafkaKey;
 @KafkaClient
 public interface  TokenUpdateClient {
         @Topic("token-update")
-        void updateToken(@KafkaKey String tokenId, String status);
-        void updateTokenCustomTopic(@Topic String topic, String tokenId, String status);
+        void updateToken(@KafkaKey Long tokenId, String status);
+        void updateTokenCustomTopic(@Topic Long topic, String tokenId, String status);
 }
 

@@ -2,6 +2,7 @@ package com.cts.eda.mnt.domain.token.service;
 
 import com.cts.eda.mnt.domain.token.Token;
 import com.cts.eda.mnt.domain.token.TokenRepository;
+import com.cts.eda.mnt.event.producer.TokenOpsResponseBean;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -12,6 +13,10 @@ public class TokenDomainService {
 
     @Inject
     TokenRepository tokenRepository;
+
+    @Inject
+    TokenOpsResponseBean tokenOpsResponseBean;
+
     public static final String ACTIVE_STATUS="Active";
     public static final String SUSPENDED_STATUS="Suspend";
 
@@ -23,6 +28,7 @@ public class TokenDomainService {
             token.get().setTokenStatus(ACTIVE_STATUS);
         }
         System.out.println(token.get());
+        tokenOpsResponseBean.notifyTokenOperaton(token.get());
         return tokenRepository.update(token.get());
     }
 }

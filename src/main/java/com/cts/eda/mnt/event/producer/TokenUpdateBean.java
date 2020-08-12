@@ -9,7 +9,7 @@ public class TokenUpdateBean {
     @Inject
     com.cts.eda.mnt.event.producer.TokenUpdateClient tokenUpdateClient;
 
-    public void updateToken(String tokenId, String Status){
+    public void updateToken(Long tokenId, String Status){
         tokenUpdateClient.updateToken(tokenId, Status);
     }
 }
